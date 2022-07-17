@@ -1,0 +1,73 @@
+import Avatar from "../../assets/images/avatar.jpg";
+
+const SalesUserSection = () => {
+  const salesUsers = [
+    {
+      images: Avatar,
+      name: "Herry Rashford",
+      time: "5",
+      money: 120.0,
+    },
+    {
+      images: Avatar,
+      name: "Herry Rashford",
+      time: "5",
+      money: 120.0,
+    },
+    {
+      images: Avatar,
+      name: "Herry Rashford",
+      time: "5",
+      money: 120.0,
+    },
+    {
+      images: Avatar,
+      name: "Herry Rashford",
+      time: "5",
+      money: 120.0,
+    },
+    {
+      images: Avatar,
+      name: "Herry Rashford",
+      time: "5",
+      money: 120.0,
+    },
+    {
+      images: Avatar,
+      name: "Herry Rashford",
+      time: "5",
+      money: 120.0,
+    },
+  ];
+
+  return (
+    <div className=" w-full mx-5 p-3 rounded-2xl border">
+      <h1 className="text-xl font-bold">Recent Sales</h1>
+      <div className="flex flex-col">
+        {salesUsers.map((item, key) => (
+          <div className="flex items-center justify-around">
+            {/* User Part */}
+            <div className=" my-2 flex w-full space-x-3 ">
+              <img
+                src={item.images}
+                alt=""
+                className="rounded-full w-12 h-12"
+              />
+              <div className=" ">
+                <h1 className="font-bold">Herry Rashford</h1>
+                <span className="text-font_primary">5 Minuets ago</span>
+              </div>
+            </div>
+
+            {/* Money Part */}
+            <div className="mx-3">
+              <h1 className="text-green-400 font-bold">$120.00</h1>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default SalesUserSection;
