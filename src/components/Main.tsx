@@ -2,6 +2,7 @@ import Navbar from "./Sections/Navbar";
 import CardSection from "./Sections/CardSection";
 import AnalyticsSection from "./Sections/AnalyticsSection";
 import SalesUserSection from "./Sections/SalesUserSection";
+import TableSection from "./Sections/TableSection";
 
 const Main = () => {
   return (
@@ -12,6 +13,7 @@ const Main = () => {
         <AnalyticsSection />
         <SalesUserSection />
       </div>
+      <TableSection />
     </div>
   );
 };
