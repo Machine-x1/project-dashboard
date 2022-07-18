@@ -6,7 +6,7 @@ import Avatar from "../../assets/images/avatar.jpg";
 const Navbar = () => {
   return (
     <div className="h-15  ">
-      <div className="flex items-center  md:justify-between">
+      <div className="flex mx-auto items-center justify-around  md:justify-between">
         {/* Descriptio */}
         <div className="p-2">
           <h1 className="text-xl font-bold">Dashbaord Overview</h1>
@@ -27,16 +27,16 @@ const Navbar = () => {
           </div>
 
           {/* Notification */}
-          <div className="hidden md:block p-1 rounded-xl border-2 relative ">
-            <IoMdNotificationsOutline className="text-font_primary w-9 h-9" />
+          <div className="hidden hover:bg-primary hover:text-white transition duration-200 text-font_primary md:block p-1 rounded-xl border-2 relative ">
+            <IoMdNotificationsOutline className=" w-9 h-9" />
             <div className="absolute top-0 right-0 h-3 w-3 rounded-full animate-pulse bg-red-500"></div>
           </div>
           {/* Lang */}
-          <div className="hidden md:block p-1 rounded-xl border-2  ">
+          <div className="hidden hover:bg-primary hover:text-white transition duration-200 md:block p-1 rounded-xl border-2  ">
             <img src={Lang} className="w-9 h-9" alt="" />
           </div>
           {/* Avatar */}
-          <div className="p-1 rounded-xl ">
+          <div className="p-1 rounded-xl  ">
             <img src={Avatar} className="w-12 h-12 rounded-full" alt="" />
           </div>
         </div>

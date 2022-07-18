@@ -19,7 +19,7 @@ const Cards = ({
   compared = 1916548,
 }: ICard) => {
   return (
-    <div className="w-72  border rounded-2xl mt-5 p-6 hover:shadow-xl hover:bg-primary  transition duration-300 hover:text-white">
+    <div className="w-[300px] border rounded-2xl mt-5 p-6 hover:shadow-xl hover:bg-primary  transition duration-300 hover:text-white">
       {/* Cart Part */}
       <div className="flex items-center space-x-3 ">
         {/* Cart Icon */}

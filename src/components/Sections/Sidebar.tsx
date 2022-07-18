@@ -1,25 +1,26 @@
 import Logo from "../../assets/images/logo.png";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { DiGoogleAnalytics } from "react-icons/di";
-import { BsHandbag, BsWallet } from "react-icons/bs";
+import { BsHandbag, BsWallet, BsArrowRightShort } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { IoAnalyticsOutline } from "react-icons/io5";
 import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineSetting } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 const Sidebar = () => {
-  const [hideSide, sethideSide] = useState(false);
-  const sideBarClass = "-left-96 transition-all duration-700";
   const mainListItems = [
     {
       itemName: "Dashboard",
       icon: <MdOutlineSpaceDashboard size={25} />,
-      ref: "#",
+      ref: "/",
     },
     {
       itemName: "Analytics",
       icon: <DiGoogleAnalytics size={25} />,
-      ref: "#",
+      ref: "/edit",
     },
     {
       itemName: "Sales",
@@ -46,40 +47,54 @@ const Sidebar = () => {
       icon: <TbReportAnalytics size={25} />,
       ref: "#",
     },
+    {
+      itemName: "Profile",
+      icon: <CgProfile size={25} />,
+      ref: "#",
+    },
+    {
+      itemName: "Settings",
+      icon: <AiOutlineSetting size={25} />,
+      ref: "#",
+    },
   ];
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [sideBarClass, setsideBarClass] = useState(
+    "top-0 right-0 w-[80vw] bg-primary text-white p-10 pl-20    fixed h-full z-50"
+  );
 
   return (
-    <div
-      className={` ${
-        hideSide ? sideBarClass : ""
-      }   w-72 h-screen hidden lg:block relative `}
-    >
-      {/* Logo Back Here Again Margin Problem */}
-      <div className="flex items-center space-x-2 pt-8 px-4 p-2 ">
-        <img src={Logo} alt="" className="" />
-        <h1 className="text-2xl font-bold text-primary">Dashboard</h1>
-      </div>
-      {/* List Items */}
-      <div className="mt-6 mx-3 ">
-        {mainListItems.map((item, key) => (
-          <a href={item.ref} key={key}>
-            <ul className="flex items-center my-3 hover:scale-105  text-font_primary hover:bg-primary hover:text-white transition-all duration-200 focus:bg-primary space-x-2 px-3 p-2 py-4 rounded-2xl text-lg font-semibold">
-              {item.icon}
-              <li>{item.itemName}</li>
-            </ul>
-          </a>
-        ))}
-
-        {/* Hide SideBar  */}
-        <div
-          className={` absolute right-0  top-2/3 bg-primary  p-2 rounded-tl-xl rounded-bl-xl`}
-        >
-          <AiOutlineArrowLeft
-            onClick={() => sethideSide(!hideSide)}
-            size={20}
-            className=" text-white cursor-pointer"
-          />
+    <div>
+      <div
+        className={` ${
+          showSidebar
+            ? sideBarClass
+            : " w-72 h-screen text-primary  hidden lg:block relative"
+        }   `}
+      >
+        {/* Logo Back Here Again Margin Problem */}
+        <div className="flex items-center space-x-2 pt-8 px-4 p-2 ">
+          <img src={Logo} alt="" className="" />
+          <h1 className="text-2xl font-bold ">Dashboard</h1>
         </div>
+        {/* List Items */}
+        <div className="mt-6 mx-3 ">
+          {mainListItems.map((item, key) => (
+            <Link to={item.ref} key={key}>
+              <ul className="flex items-center my-3 hover:scale-105  text-font_primary hover:bg-primary hover:text-white transition-all duration-200 focus:bg-primary space-x-2 px-3 p-2 py-4 rounded-2xl text-lg font-semibold">
+                {item.icon}
+                <li>{item.itemName}</li>
+              </ul>
+            </Link>
+          ))}
+        </div>
+      </div>
+      <div className=" fixed z-50 top-1/2 bg-primary h-12 flex md:hidden items-center rounded-r-xl ">
+        <BsArrowRightShort
+          size={18}
+          onClick={() => setShowSidebar(!showSidebar)}
+          className="text-white"
+        />
       </div>
     </div>
   );
