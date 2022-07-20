@@ -1,99 +1,81 @@
 import { useState } from "react";
-import {
-  CartesianGrid,
-  LineChart,
-  Tooltip,
-  XAxis,
-  Line,
-  ResponsiveContainer,
-  Legend,
-  YAxis,
-  Bar,
-  BarChart,
-} from "recharts";
+
 import Chart from "react-apexcharts";
+import SelectButton from "../SelectButton";
+import SalesUserSection from "./SalesUserSection";
 
 const AnalyticsSection = () => {
   const [data, setData] = useState({
     options: {
       chart: {
-        id: "basic-bar",
+        id: "line",
+        toolbar: {
+          show: false,
+        },
       },
+      legend: {
+        show: true,
+        position: "top" as "top",
+      },
+
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+        categories: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
       },
+      yaxis: {
+        min: 0,
+        max: 80,
+      },
+      colors: ["#ECABF6", "#1097FF", "#00000"],
     },
 
     series: [
       {
-        name: "series-1",
-        data: [30, 40, 45, 50, 49, 60, 70, 91],
+        name: "Markting Sales",
+        data: [0, 49, 24, 55, 28, 8, 33, 28, 53, 8, 33],
+        showLine: false,
+      },
+      {
+        name: "Online Sales",
+        data: [0, 30, 70, 16, 28, 45, 10, 28, 28, 8, 33],
       },
     ],
   });
 
   return (
-    <div className=" p-3  max-h-[28rem]  border rounded-2xl">
-      <div id="chart" className="py-3">
+    <div className=" py-3 flex gap-3 md:flex-row flex-col justify-between items-center">
+      <div id="chart" className="py-3 w-full max-h-[29rem] border rounded-2xl">
+        <div className="px-4 flex justify-between">
+          <h1 className="text-xl font-bold">Sales analysis</h1>
+          <SelectButton
+            default="This Year"
+            list={[2002, 2001, 2003, 2004, 2005]}
+          />
+        </div>
         <Chart
           options={data.options}
           series={data.series}
-          type="bar"
-          className=" "
+          type="area"
+          height={400}
         />
+      </div>
+      <div className="w-full lg:w-[35%]">
+        <SalesUserSection />
       </div>
     </div>
   );
 };
+// <SalesUserSection />;
 
 export default AnalyticsSection;
-
-// import {
-//   CartesianGrid,
-//   LineChart,
-//   Tooltip,
-//   XAxis,
-//   Line,
-//   ResponsiveContainer,
-//   Legend,
-//   YAxis,
-//   Bar,
-//   BarChart,
-// } from "recharts";
-
-// const AnalyticsSection = () => {
-//   const data = [
-//     { name: "Jun", uv: 0, pv: 0, amt: 0 },
-//     { name: "Feb", uv: 50, pv: 500, amt: 2400 },
-//     { name: "Mar", uv: 200, pv: 500, amt: 2400 },
-//     { name: "Apr", uv: 100, pv: 900, amt: 2300 },
-//     { name: "May", uv: 150, pv: 850, amt: 2800 },
-//     { name: "Jun", uv: 180, pv: 2000, amt: 2400 },
-//   ];
-//   const screen = window.innerWidth;
-
-//   return (
-//     <div className=" p-3  border rounded-2xl">
-//       <div id="chart" className="py-3">
-//         <ResponsiveContainer width="100%" height={400}>
-//           <BarChart
-//             className="barChart"
-//             width={600}
-//             height={300}
-//             data={data}
-//             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-//           >
-//             <CartesianGrid strokeDasharray="3 3" />
-//             <XAxis dataKey="name" />
-//             <YAxis />
-//             <Tooltip />
-//             <Legend />
-//             <Bar dataKey="uv" barSize={10} fill="#05386b" />
-//           </BarChart>
-//         </ResponsiveContainer>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AnalyticsSection;

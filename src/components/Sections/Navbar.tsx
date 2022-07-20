@@ -1,9 +1,28 @@
-import { AiOutlineSearch } from "react-icons/ai";
-import { IoMdNotificationsOutline } from "react-icons/io";
 import Lang from "../../assets/images/lang.png";
 import Avatar from "../../assets/images/avatar.jpg";
+import Search from "../Search";
+import NotificationBell from "../NotificationBell";
+import { BsChevronDown } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import SelectButton from "../SelectButton";
 
 const Navbar = () => {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const [date, setDate] = useState(new Date());
+
   return (
     <div className="h-15  ">
       <div className="flex mx-auto items-center justify-around  md:justify-between">
@@ -11,28 +30,24 @@ const Navbar = () => {
         <div className="p-2">
           <h1 className="text-xl font-bold">Dashbaord Overview</h1>
           <span className="text-font_primary">
-            12:05 at 19th Novermber 2022
+            {/* 12:05 at 19th Novermber 2022 */}
+            {/* {`${date.getHours()}:${date.getMinutes()} at ${date.getDay()} ${
+              monthNames[date.getMonth()]
+            } ${date.getFullYear()}`} */}
           </span>
         </div>
 
         <div className="flex items-center md:space-x-5">
           {/* Search */}
-          <div className="hidden md:flex w-fit h-12   px-4 py-2  items-center space-x-2 rounded-xl  border-2">
-            <input
-              type="text"
-              className="outline-none"
-              placeholder="Search.."
-            />
-            <AiOutlineSearch size={20} className="text-font_primary" />
-          </div>
-
+          <Search />
           {/* Notification */}
-          <div className="hidden hover:bg-primary hover:text-white transition duration-200 text-font_primary md:block p-1 rounded-xl border-2 relative ">
-            <IoMdNotificationsOutline className=" w-9 h-9" />
-            <div className="absolute top-0 right-0 h-3 w-3 rounded-full animate-pulse bg-red-500"></div>
-          </div>
+          <SelectButton
+            default="This Year"
+            list={[2002, 2001, 2003, 2004, 2005]}
+          />
+          <NotificationBell />
           {/* Lang */}
-          <div className="hidden hover:bg-primary hover:text-white transition duration-200 md:block p-1 rounded-xl border-2  ">
+          <div className="hidden  transition duration-200 md:block p-1 rounded-xl border-2  ">
             <img src={Lang} className="w-9 h-9" alt="" />
           </div>
           {/* Avatar */}

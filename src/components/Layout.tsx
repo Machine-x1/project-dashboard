@@ -6,7 +6,7 @@ const Layout = ({ children }: { children?: ReactNode }) => {
   return (
     <div className="flex bg-background_primary ">
       <Sidebar />
-      <div className="bg-white  mr-4 mt-5 w-screen rounded-t-[3rem] px-4 py-4">
+      <div className="bg-white mt-5 w-screen rounded-t-[3rem] px-3 py-4">
         <Navbar />
         {children}
       </div>

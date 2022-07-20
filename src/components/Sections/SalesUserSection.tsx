@@ -35,7 +35,7 @@ const SalesUserSection = () => {
   ];
 
   return (
-    <div className="  h-[28rem] mx-5 p-3 rounded-2xl border">
+    <div className="  h-[29rem]  p-3 rounded-2xl border">
       <h1 className="text-xl font-bold">Recent Sales</h1>
       <div className="flex flex-col">
         {salesUsers.map((item, key) => (
